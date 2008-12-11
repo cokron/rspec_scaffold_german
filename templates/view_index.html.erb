@@ -1,0 +1,24 @@
+<h1><%= plural_name %></h1>
+
+<table>
+  <tr>
+<% for attribute in attributes -%>
+    <th><%= attribute.column.human_name %></th>
+<% end -%>
+  </tr>
+
+<%% for <%= singular_name %> in @<%= plural_name %> %>
+  <tr>
+<% for attribute in attributes -%>
+    <td><%%=h <%= singular_name %>.<%= attribute.name %> %></td>
+<% end -%>
+    <td><%%= link_to 'Anzeigen', <%= singular_name %> %></td>
+    <td><%%= link_to 'Bearbeiten', edit_<%= singular_name %>_path(<%= singular_name %>) %></td>
+    <td><%%= link_to 'Löschen', <%= singular_name %>, :confirm => 'Möchten Sie den gewählten Datensatz wirklich löschen?', :method => :delete %></td>
+  </tr>
+<%% end %>
+</table>
+
+<br />
+
+<%%= link_to '<%= class_name %> erstellen', new_<%= singular_name %>_path %>
