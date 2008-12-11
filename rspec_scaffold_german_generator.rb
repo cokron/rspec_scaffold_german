@@ -1,4 +1,5 @@
-class RsGenerator < Rails::Generator::NamedBase
+class RspecScaffoldGermanGenerator < Rails::Generator::NamedBase
+  # most of the code is from
   default_options :skip_migration => false
 
   attr_reader :controller_name,
