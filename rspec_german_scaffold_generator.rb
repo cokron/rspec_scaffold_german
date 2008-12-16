@@ -33,7 +33,7 @@ class RspecGermanScaffoldGenerator < Rails::Generator::NamedBase
       @resource_generator = "scaffold_resource"
       @default_file_extension = "rhtml"
     else
-      @resource_generator = "rspec_scaffold_german"
+      @resource_generator = "rspec_german_scaffold"
       @default_file_extension = "html.erb"
     end
 
@@ -132,7 +132,7 @@ class RspecGermanScaffoldGenerator < Rails::Generator::NamedBase
   protected
     # Override with your own usage banner.
     def banner
-      "Usage: #{$0} rspec_scaffold_german ModelName [field:type field:type]"
+      "Usage: #{$0} rspec_german_scaffold ModelName [field:type field:type]"
     end
 
     def add_options!(opt)
