@@ -1,4 +1,4 @@
-class RspecScaffoldGermanGenerator < Rails::Generator::NamedBase
+class RspecGermanScaffoldGenerator < Rails::Generator::NamedBase
   # most of the code is from
   default_options :skip_migration => false
 
