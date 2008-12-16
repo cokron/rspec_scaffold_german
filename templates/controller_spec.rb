@@ -6,6 +6,10 @@ describe <%= controller_class_name %>Controller do
     @mock_<%= file_name %> ||= mock_model(<%= class_name %>, stubs)
   end
 
+  before(:each) do
+    login_having_role :admin
+  end
+
   describe "responding to GET index" do
 
     it "should expose all <%= table_name.pluralize %> as @<%= table_name.pluralize %>" do

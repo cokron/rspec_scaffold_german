@@ -1,4 +1,7 @@
 class <%= controller_class_name %>Controller < ApplicationController
+  #require_role "admin", :for => [:index, :show, :new, :edit, :create, :update, :destroy]
+  require_role "admin", :for_all_except => [:index, :show]
+
   # GET /<%= table_name %>
   # GET /<%= table_name %>.xml
   def index
