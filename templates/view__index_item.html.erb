@@ -1,0 +1,6 @@
+  <tr><% first=true %><% for attribute in attributes -%><% next if attribute.name == 'permalink' %><% if first %>
+    <td><%%= link_to h(<%= singular_name %>.<%= attribute.name %>), <%= singular_name %> %></td><% first=false %><% else %>
+    <td><%%=h <%= singular_name %>.<%= attribute.name %> %></td><% end %><% end -%>
+    <td><%%= link_to image_tag('edit.png', :title => 'Bearbeiten', :border=>0), edit_<%= singular_name %>_path(<%= singular_name %>) %></td>
+    <td class="rechts"><%%= link_to image_tag('delete.gif', :title => 'Löschen',:border=>0), <%= singular_name %>, :confirm => "<%= singular_name_cap %> '#{h <%= singular_name %>.display_name}' wirklich löschen?", :method => :delete %></td>
+  </tr>

@@ -1,3 +1,8 @@
+<p class="breadcrump">
+  <%%= link_to '<%= plural_name_cap %>', <%= plural_name %>_path %> &gt;
+  <%%= @<%= singular_name %>.display_name %> bearbeiten
+</p>
+
 <%%= render :partial => 'form', :locals => {:title => '<%= singular_name_cap %> bearbeiten'}  %>
 
 <%%= link_to 'Anzeigen', @<%= singular_name %> %> |

@@ -1,31 +1,28 @@
-<h1><%= plural_name %></h1>
+<p class="breadcrump">
+  <%= plural_name_cap %>
+</p>
 
+
+<h1><%= plural_name_cap %></h1>
+
+<%% if @<%= plural_name %>.size > 0 %>
 <table>
   <tr>
-<% for attribute in attributes -%>
-<% next if attribute.name == 'permalink' %>
-
-    <th><%= attribute.column.human_name %></th>
-<% end -%>
+<% for attribute in attributes -%><% next if attribute.name == 'permalink' %>
+    <th><%= attribute.column.human_name %></th><% end -%>
+    <th>&nbsp;</th>
+    <th class="rechts">&nbsp;</th>
   </tr>
 
-<%% for <%= singular_name %> in @<%= plural_name %> %>
-  <tr>
-<% first=true %>
-<% for attribute in attributes -%>
-<% next if attribute.name == 'permalink' %>
-<% if first %>
-    <td><%%= link_to h(<%= singular_name %>.<%= attribute.name %>), <%= singular_name %> %></td>
-<% first=false %>
-<% else %>
-    <td><%%=h <%= singular_name %>.<%= attribute.name %> %></td>
-<% end %>
-<% end -%>
-    <td><%%= link_to image_tag('edit.png', :title => 'Bearbeiten', :border=>0), edit_<%= singular_name %>_path(<%= singular_name %>) %></td>
-    <td><%%= link_to image_tag('delete.gif', :title => 'Löschen',:border=>0), <%= singular_name %>, :confirm => 'Möchten Sie den gewählten Datensatz wirklich löschen?', :method => :delete %></td>
-  </tr>
-<%% end %>
+
+  <%%= render :partial => 'index_item', :collection => @<%= plural_name %>, :as => :<%= singular_name %> %>
+
 </table>
+<%% else %>
+<p>
+  <i>Es sind keine <%= plural_name_cap %> im System erfasst.</i>
+</p>
+<%% end %>
 
 <br />
 

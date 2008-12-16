@@ -143,7 +143,7 @@ class RspecGermanScaffoldGenerator < Rails::Generator::NamedBase
     end
 
     def scaffold_views
-      %w[ index show new edit _form]
+      %w[ index show new edit _form _index_item]
     end
 
     def model_name
