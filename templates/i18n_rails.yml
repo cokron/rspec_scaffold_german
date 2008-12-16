@@ -1,0 +1,129 @@
+#  %a - The abbreviated weekday name (``Sun'')
+#  %A - The  full  weekday  name (``Sunday'')
+#  %b - The abbreviated month name (``Jan'')
+#  %B - The  full  month  name (``January'')
+#  %c - The preferred local date and time representation
+#  %d - Day of the month (01..31)
+#  %H - Hour of the day, 24-hour clock (00..23)
+#  %I - Hour of the day, 12-hour clock (01..12)
+#  %j - Day of the year (001..366)
+#  %m - Month of the year (01..12)
+#  %M - Minute of the hour (00..59)
+#  %p - Meridian indicator (``AM''  or  ``PM'')
+#  %S - Second of the minute (00..60)
+#  %U - Week  number  of the current year,
+#          starting with the first Sunday as the first
+#          day of the first week (00..53)
+#  %W - Week  number  of the current year,
+#          starting with the first Monday as the first
+#          day of the first week (00..53)
+#  %w - Day of the week (Sunday is 0, 0..6)
+#  %x - Preferred representation for the date alone, no time
+#  %X - Preferred representation for the time alone, no date
+#  %y - Year without a century (00..99)
+#  %Y - Year with century
+#  %Z - Time zone name
+#  %% - Literal ``%'' character
+
+"de-DE":
+   date:
+     formats:
+       default: "%d.%m.%Y"
+       short: "%d.%m.%y"
+       long: "%B %e, %Y"
+       only_day: "%e"
+ 
+     day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
+     abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
+     month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+     abbr_month_names: [~, Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez]
+     order: [ :day, :month, :year ]
+ 
+   time:
+     formats:
+       default: "%d.%m.%y %H:%Mh"
+       time: "%H:%M"
+       short: "%d.%m.%y"
+       long: "%d.%B. %Y %H:%M"
+       only_second: "%S"
+ 
+       datetime:
+         formats:
+           default: "%d.%m.%Y %H:%M" #:%S%Z
+ 
+     am: 'am'
+     pm: 'pm'
+ 
+   datetime:
+     distance_in_words:
+       half_a_minute: 'eine halbe Minute'
+       less_than_x_seconds:
+         zero: 'weniger als eine Sekunde'
+         one: '1 Sekunde'
+         other: '{{count}} Sekunden'
+       x_seconds:
+         one: '1 second'
+         other: '{{count}} seconds'
+       less_than_x_minutes:
+         zero: 'weniger als eine Minute'
+         one: '1 Minute'
+         other: '{{count}} Minuten'
+       x_minutes:
+         one: '1 Minute'
+         other: '{{count}} Minuten'
+       about_x_hours:
+         one: 'ca. 1 Stunde'
+         other: '{{count}} Stunden'
+       x_days:
+         one: '1 Tag'
+         other: '{{count}} Tage'
+       about_x_months:
+         one: 'ca. 1 Monat'
+         other: '{{count}} Monate'
+       x_months:
+         one: '1 Monat'
+         other: '{{count}} Monate'
+       about_x_years:
+         one: 'ca. 1 Jahr'
+         other: '{{count}} Jahre'
+       over_x_years:
+         one: 'über 1 Jahr'
+         other: '{{count}} Jahre'
+ 
+   number:
+     format:
+       precision: 2
+       separator: ','
+       delimiter: '.'
+     currency:
+       format:
+         unit: '€'
+         precision: 2
+         format: '%n %u'
+
+   activerecord:
+     errors:
+      messages:
+        inclusion: "ist nicht in Liste gültiger Optionen enthalten"
+        exclusion: "ist reserviert"
+        invalid: "ist ungültig"
+        confirmation: "entspricht nicht der Bestätigung"
+        accepted : "muss akzeptiert werden"
+        empty: "darf nicht leer sein"
+        blank: "darf nicht leer sein"
+        too_long: "ist zu lang (höchstens {{count}} Zeichen)"
+        too_short: "ist zu kurz (mindestens {{count}} Zeichen)"
+        wrong_length: "hat eine falsche Länge (es sollten {{count}} Zeichen sein)"
+        taken: "ist schon vergeben"
+        not_a_number: "ist keine Zahl"
+        greater_than: "muss größer sein als {{count}}"
+        greater_than_or_equal_to: "muss größer oder gleich {{count}} sein"
+        equal_to: "muss gleich {{count}} sein"
+        less_than: "muss kleiner sein als {{count}}"
+        less_than_or_equal_to: "muss kleiner oder gleich {{count}} sein"
+        odd: "muss ungerade sein"
+        even: "muss gerade sein"
+        can_only_contain_letters_and_numbers: "darf nur Buchstaben und Zahlen enthalten"
+
+
+
