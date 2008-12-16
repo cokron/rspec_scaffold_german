@@ -1,6 +1,4 @@
-<h1><%= singular_name %> bearbeiten</h1>
-
-<%%= render :partial => 'form' %>
+<%%= render :partial => 'form', :locals => {:title => '<%= singular_name_cap %> bearbeiten'}  %>
 
 <%%= link_to 'Anzeigen', @<%= singular_name %> %> |
 <%%= link_to 'Zurück', <%= plural_name %>_path %>

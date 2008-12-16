@@ -2,8 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '<%= '/..' * class_nesting_dep
 
 <% output_attributes = attributes.reject{|attribute| [:datetime, :timestamp, :time, :date].index(attribute.type) } -%>
 describe "/<%= table_name %>/index.<%= default_file_extension %>" do
-  include <%= controller_class_name %>Helper
-  
+#  include <%= controller_class_name %>Helper
+
   before(:each) do
     assigns[:<%= table_name %>] = [
 <% [1,2].each_with_index do |id, model_index| -%>
@@ -20,7 +20,7 @@ describe "/<%= table_name %>/index.<%= default_file_extension %>" do
 
   it "should render list of <%= table_name %>" do
     render "/<%= table_name %>/index.<%= default_file_extension %>"
-<% for attribute in output_attributes -%>
+<% for attribute in output_attributes -%><% next if attribute.name == 'permalink' %>
     response.should have_tag("tr>td", <%= attribute.default_value %>.to_s, 2)
 <% end -%>
   end

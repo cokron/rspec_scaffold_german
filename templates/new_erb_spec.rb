@@ -2,8 +2,8 @@ require File.expand_path(File.dirname(__FILE__) + '<%= '/..' * class_nesting_dep
 
 <% output_attributes = attributes.reject{|attribute| [:datetime, :timestamp, :time, :date].index(attribute.type) } -%>
 describe "/<%= table_name %>/new.<%= default_file_extension %>" do
-  include <%= controller_class_name %>Helper
-  
+#  include <%= controller_class_name %>Helper
+
   before(:each) do
     assigns[:<%= file_name %>] = stub_model(<%= class_name %>,
       :new_record? => true<%= output_attributes.empty? ? '' : ',' %>
@@ -15,9 +15,9 @@ describe "/<%= table_name %>/new.<%= default_file_extension %>" do
 
   it "should render new form" do
     render "/<%= table_name %>/new.<%= default_file_extension %>"
-    
+
     response.should have_tag("form[action=?][method=post]", <%= table_name %>_path) do
-<% for attribute in output_attributes -%>
+<% for attribute in output_attributes -%><% next if attribute.name == 'permalink' %>
       with_tag("<%= attribute.input_type -%>#<%= file_name %>_<%= attribute.name %>[name=?]", "<%= file_name %>[<%= attribute.name %>]")
 <% end -%>
     end

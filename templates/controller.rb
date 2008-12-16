@@ -49,7 +49,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     respond_to do |format|
       if @<%= file_name %>.save
         flash[:notice] = '<%= class_name %> wurde erstellt.'
-        format.html { redirect_to(@<%= file_name %>) }
+        format.html { redirect_to(@<%= file_name %>) } # redirect_to(<%= table_name %>_url)
         format.xml  { render :xml => @<%= file_name %>, :status => :created, :location => @<%= file_name %> }
       else
         format.html { render :action => "new" }

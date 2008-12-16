@@ -1,14 +1,8 @@
-<%% form_for(@<%= singular_name %>) do |f| %>
-  <%%= f.error_messages %>
-
-<% for attribute in attributes -%>
-  <p>
-    <%%= f.label :<%= attribute.name %> %><br />
-    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
-  </p>
-<% end -%>
-  <p>
-    <%%= f.submit "Speichern" %>
-  </p>
-<%% end %>
+<%% error_handling_form_for(@<%= singular_name %>, :title => title) do |f| -%> 
+<!-- <%%= f.error_messages %>-->
+<% for attribute in attributes -%><% next if attribute.name == 'permalink' %><% if attribute.field_type == :text_area %>
+  <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'textarea-5-lines' %> <% else %>  
+  <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %><% end %><% end -%>
+  <%%= f.submit 'Speichern', :class => 'submit' %> 
+<%% end -%> 
 

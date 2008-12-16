@@ -3,22 +3,30 @@
 <table>
   <tr>
 <% for attribute in attributes -%>
+<% next if attribute.name == 'permalink' %>
+
     <th><%= attribute.column.human_name %></th>
 <% end -%>
   </tr>
 
 <%% for <%= singular_name %> in @<%= plural_name %> %>
   <tr>
+<% first=true %>
 <% for attribute in attributes -%>
+<% next if attribute.name == 'permalink' %>
+<% if first %>
+    <td><%%= link_to h(<%= singular_name %>.<%= attribute.name %>), <%= singular_name %> %></td>
+<% first=false %>
+<% else %>
     <td><%%=h <%= singular_name %>.<%= attribute.name %> %></td>
+<% end %>
 <% end -%>
-    <td><%%= link_to 'Anzeigen', <%= singular_name %> %></td>
-    <td><%%= link_to 'Bearbeiten', edit_<%= singular_name %>_path(<%= singular_name %>) %></td>
-    <td><%%= link_to 'Löschen', <%= singular_name %>, :confirm => 'Möchten Sie den gewählten Datensatz wirklich löschen?', :method => :delete %></td>
+    <td><%%= link_to image_tag('edit.png', :title => 'Bearbeiten', :border=>0), edit_<%= singular_name %>_path(<%= singular_name %>) %></td>
+    <td><%%= link_to image_tag('delete.gif', :title => 'Löschen',:border=>0), <%= singular_name %>, :confirm => 'Möchten Sie den gewählten Datensatz wirklich löschen?', :method => :delete %></td>
   </tr>
 <%% end %>
 </table>
 
 <br />
 
-<%%= link_to '<%= class_name %> erstellen', new_<%= singular_name %>_path %>
+<%%= link_to '<%= singular_name_cap %> erstellen', new_<%= singular_name %>_path %>
