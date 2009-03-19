@@ -2,9 +2,7 @@
   <%= plural_name_cap %>
 </p>
 
-
 <h1><%= plural_name_cap %></h1>
-
 <%% if @<%= plural_name %>.size > 0 %>
 <table>
   <tr>
@@ -26,4 +24,4 @@
 
 <br />
 
-<%%= link_to '<%= singular_name_cap %> erstellen', new_<%= singular_name %>_path %>
+<%%= link_to '<%= singular_name_cap %> erstellen', new_<%= singular_name %>_path, :accesskey => 'n', :title => 'Ctrl+n' %>
