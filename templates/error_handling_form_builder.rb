@@ -2,7 +2,7 @@ class ErrorHandlingFormBuilder < ActionView::Helpers::FormBuilder
   helpers = field_helpers +
     %w(date_select datetime_select time_select collection_select) +
     %w(collection_select select country_select time_zone_select) -
-    %w(label fields_for)
+    %w(label fields_for hidden_field)
   helpers.each do |name|
     define_method name do |field, *args|
       options = args.detect {|argument| argument.is_a?(Hash)} || {}
@@ -21,15 +21,28 @@ class ErrorHandlingFormBuilder < ActionView::Helpers::FormBuilder
     @template.capture do
       locals = {
         :element => yield,
-        :label => label(field, options[:label])
+        :label => label(field, options[:label]),
+        :hint => options[:hint],
+        :style => options[:style]
       }
-      if has_errors_on?(field)
-        locals.merge!(:error => error_message(field, options))
-        @template.render :partial => 'forms/field_with_errors',
-        :locals => locals
+      if (options[:builder_style] == 'simple')
+        if has_errors_on?(field)
+          locals.merge!(:error => error_message(field, options))
+          @template.render :partial => 'forms/field_with_errors_simple',
+          :locals => locals
+        else
+          @template.render :partial => 'forms/field_simple',
+          :locals => locals
+        end
       else
-        @template.render :partial => 'forms/field',
-        :locals => locals
+        if has_errors_on?(field)
+          locals.merge!(:error => error_message(field, options))
+          @template.render :partial => 'forms/field_with_errors',
+          :locals => locals
+        else
+          @template.render :partial => 'forms/field',
+          :locals => locals
+        end
       end
     end
   end

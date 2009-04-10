@@ -108,6 +108,7 @@ class RspecGermanScaffoldGenerator < Rails::Generator::NamedBase
       m.template('error_handling_form_builder.rb', 'lib/error_handling_form_builder.rb')
       m.template('form_helper.rb', 'app/helpers/form_helper.rb')
       m.template('view__field.html.erb', 'app/views/forms/_field.html.erb')
+      m.template('view__field_simple.html.erb', 'app/views/forms/_field_simple.html.erb')
       m.template('view__field_with_errors.html.erb', 'app/views/forms/_field_with_errors.html.erb')
       m.template('i18n_rails.yml', 'config/locales/de-DE/i18n_rails.yml')
       m.template('i18n.rb', 'config/initializers/i18n.rb')
