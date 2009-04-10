@@ -3,6 +3,7 @@
 <% for attribute in attributes -%><% next if attribute.name == 'permalink' %><% if attribute.field_type == :text_area %>
   <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => 'textarea-5-lines' %> <% else %>  
   <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %><% end %><% end -%>
-  <%%= f.submit 'Speichern', :class => 'submit' %> 
+
+  <%%= f.submit 'Speichern', :class => 'submit', :accesskey => 's', :title => 'Ctrl+s' %> 
 <%% end -%> 
 
